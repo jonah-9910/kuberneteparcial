@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernete-app2
+  labels:
+    app: kuberneteparcial2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuberneteparcial2
+  template:
+    metadata:
+      labels:
+        app: kuberneteparcial2 
+    spec:
+      containers:
+      - name: nodeserver
+        image: jdr1099/kuberneteparcial:latest
+        ports:
+        - containerPort: 3001
+        resources:
+            requests:
+              memory: "250Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "1000m"
